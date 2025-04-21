@@ -1,6 +1,7 @@
 package com.wilson.studentApi.student;
 
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +13,10 @@ import java.util.List;
 public class StudentController {
 
 
-    private StudentService studentService;
+    private final StudentService studentService;
 
 
-    public StudentController(StudentService studentService){
+    public StudentController(StudentDBService studentService){
         this.studentService = studentService;
     }
 
@@ -31,12 +32,12 @@ public class StudentController {
 
     @PostMapping
     public Student createStudent(@RequestBody Student newStudent){
-        return this.studentService.createStudent(newStudent);
+        return studentService.createStudent(newStudent);
     }
 
     @PutMapping
     public Student updateStudent(@RequestBody Student newStudent){
-        return this.studentService.updateStudent(newStudent);
+        return studentService.updateStudent(newStudent);
     }
 
     @DeleteMapping("/{email}")

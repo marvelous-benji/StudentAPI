@@ -1,3 +1,17 @@
 spring:
   application:
     name: studentApi
+  datasource:
+    url: jdbc:postgresql://localhost:5432/student
+    username: mac
+    password: macs
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+      database: postgresql
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
